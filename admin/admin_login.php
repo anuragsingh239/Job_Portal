@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,18 +30,40 @@
   </head>
 
   <body class="text-center">
-    <form class="form-signin" id="admin_login" name="admin_login">
+    <!-- <form class="form-signin" id="admin_login" name="admin_login"> -->
+    <form class="form-signin" id="admin_login" name="admin_login" method="post" action="admin_login.php">
+
       <img class="mb-4" src="img/logo.jpg" alt="" width="115" height="115">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name="password" id="pass" class="form-control" placeholder="Password" required>
+      <input type="password" name="pass" id="pass" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
         
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	  <p class="mt-5 mb-3 text-muted"> Admin login</p>
+      <input class="btn btn-lg btn-primary btn-block" name="submit" id="submit" type="submit" placeholder="sign in">
+    <p class="h3 mb-3 font-weight-normal">Admin Login</p>
     </form>
   </body>
 </html>
+
+
+
+<?php
+include('connection/db.php');
+if(isset($_POST['submit'])){
+   $email=$_POST['email'];
+   $pass=$_POST['pass'];
+   $query=mysqli_query($conn,"select * from admin_login where admin_email='$email' and admin_pass='$pass' ");
+   if($query){
+   if(mysqli_num_rows($query)>0){
+    echo $_SESSION['email']=$email;
+      header('location:admin_dashboard.php');
+   }
+   else{
+    echo "<script>alert('Email or Password is incorrect,Please try again')</script>";
+   }
+}
+}
+?>
