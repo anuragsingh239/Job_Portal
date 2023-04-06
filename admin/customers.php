@@ -28,7 +28,8 @@ if($_SESSION['email']==true){
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- datatable css -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
   </head>
@@ -123,8 +124,14 @@ if($_SESSION['email']==true){
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="#">Customers</a></li>
+            </ol>
+          </nav>
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+          <h1 class="h2">Customers</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -136,8 +143,36 @@ if($_SESSION['email']==true){
               </button>
             </div>
           </div>
+          <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>#Sn</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+            <tr>
+                <td>Donna Snider</td>
+                <td>Customer Support</td>
+                <td>New York</td>
+                <td>27</td>
+                
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+            <th>#Sn</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                
+            </tr>
+        </tfoot>
+    </table>
 
           <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+
 
         </main>
       </div>
@@ -156,37 +191,14 @@ if($_SESSION['email']==true){
     <script>
       feather.replace()
     </script>
-
-    <!-- Graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
+    <!-- datatables plugin -->
+    <!-- from datatable.net -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
+      $(document).ready(function () {
+    $('#example').DataTable();
+});
     </script>
   </body>
 </html>
