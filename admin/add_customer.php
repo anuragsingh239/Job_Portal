@@ -127,63 +127,53 @@ if($_SESSION['email']==true){
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="#">Customers</a></li>
+            <li class="breadcrumb-item"><a href="customers.php">Customers</a></li>
+            <li class="breadcrumb-item"><a href="#"> Add Customer</a></li>
+
             </ol>
           </nav>
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Customers</h1>
+          <h1 class="h2">Add Customer</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
               </div>
-              <a class="btn btn-primary" href="add_customer.php">Add Customer</a>
             </div>
           </div>
-          <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>#Sn</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Admin type</th>
+          <div style="width:50%;margin-left:20%;background-color:#F2F4F4">
+            <form action="" style="margin: 3%;padding:3%">
+                <div class="form-group">
+                    <label for="Customer Email">Enter Customer Email</label>
+                    <input type="email" class="form-control" placeholder="Enter Customer Email">
+                </div>
+                <div class="form-group">
+                    <label for="Customer Username">Enter Username</label>
+                    <input type="text" class="form-control" placeholder="Enter Customer Username">
+                </div>
+                <div class="form-group">
+                    <label for="Password">Enter Password</label>
+                    <input type="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                    <label for="First name">Enter First Name</label>
+                    <input type="text" class="form-control" placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                    <label for="Last name">Enter Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter last name">
+                </div>
+                <div class="form-group">
+                    <label for="Admin type">Admin Type</label>
+                    <select name="admin_type" class="form-control" id="admin_type">
+                        <option value="1">Super Admin</option>
+                        <option value="2">Customer Admin</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <input type="submit" class="btn btn-block btn-success" placeholder="Save" name="submit" id="submit">
+                </div>
                 
-                
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        include('connection/db.php');
-        $query=mysqli_query($conn,"select * from admin_login");
-        while($row=mysqli_fetch_array($query)){
-        ?>
-            <tr>
-                <td><?php echo $row['id'];?></td>
-                <td><?php echo $row['admin_email'];?></td>
-                <td><?php echo $row['admin_username'];?></td>
-                <td><?php echo $row['first_name'];?></td>
-                <td><?php echo $row['last_name'];?></td>
-                <td><?php echo $row['admin_type'];?></td>
-                
-            </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>#Sn</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Admin type</th>
-
-                
-            </tr>
-        </tfoot>
-    </table>
-
+            </form>
+          </div>
           <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
 
