@@ -47,7 +47,7 @@ include('include/sidebar.php');
                 <td>
                   <div class="row">
                     <div class="btn-group">
-                      <a href="customer_edit.php" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a href="customer_edit.php ?edit=<?php echo $row['id'];?>" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
                       <a href="customer_delete.php?del=<?php echo $row['id'];?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                     </div>
 
