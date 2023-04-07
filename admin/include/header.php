@@ -16,7 +16,9 @@ if($_SESSION['email']==true){
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title>Admin Dashboard </title>
-
+    <!-- bootstrap for icon -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
