@@ -32,7 +32,7 @@ while($row=mysqli_fetch_array($query)){
           </div>
           <div style="width:50%;margin-left:20%;background-color:#F2F4F4">
           <div id="msg"></div>
-            <form action="" method="post" style="margin: 3%;padding:3%" name="customer_form" id="customer_form">
+            <form action="customers.php" method="post" style="margin: 3%;padding:3%" name="customer_form" id="customer_form">
                 <div class="form-group">
                     <label for="Customer Email">Enter Customer Email</label>
                     <input type="email" name="email" id="email" value="<?php echo $email?>" class="form-control" placeholder="Enter Customer Email">
@@ -60,14 +60,14 @@ while($row=mysqli_fetch_array($query)){
                         <option value="2">Customer Admin</option>
                     </select>
                     </div>
-                    <input type="hidden" name="id" id="id" value="<?php $id=$_GET['edit']; ?>">
+                    <input type="hidden" name="id" id="id" value="<?php echo $id=$_GET['edit']; ?>">
                     <div class="form-group">
                     <input type="submit" class="btn btn-block btn-success" placeholder="Update" name="submit" id="submit">
                 </div>
                 
             </form>
           </div>
-          <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+          <!-- <canvas class="my-4" id="myChart" width="900" height="380"></canvas> -->
 
 
         </main>
@@ -109,8 +109,8 @@ if(isset($_POST['submit'])){
     $first_name=$_POST['first_name'];
     $last_name=$_POST['last_name'];
     $admin_type=$_POST['admin_type'];
-    $query=mysqli_query($conn,"update admin_login set admin_email='$email',admin_username='$Username',admin_pass='$Password',first_name='$first_name',last_name='$last_name',admin_type='$admin_type' where id='$id'");
-    if($query){
+    $query1=mysqli_query($conn,"update admin_login set admin_email='$email',admin_username='$Username',admin_pass='$Password',first_name='$first_name',last_name='$last_name',admin_type='$admin_type' where id='$id'");
+    if($query1){
         echo "<script> alert('Record has been Updated!!')</script>";
         header('location:customers.php');
     }
