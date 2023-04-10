@@ -39,9 +39,9 @@ if(mysqli_num_rows($query)>0){
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="create_company.php">
                   <span data-feather="layers"></span>
-                  Integrations
+                  Company
                 </a>
               </li>
             </ul>
@@ -104,12 +104,6 @@ if(mysqli_num_rows($query)>0){
                 <a class="nav-link" href="job_create.php">
                   <span data-feather="bar-chart-2"></span>
                   Job Create
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Integrations
                 </a>
               </li>
             </ul>
