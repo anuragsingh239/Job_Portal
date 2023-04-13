@@ -16,16 +16,20 @@ include('include/sidebar.php');
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
               </div>
-              <a class="btn btn-primary" href="add_company.php">Create Job</a>
+              <a class="btn btn-primary" href="add_job.php">Create Job</a>
             </div>
           </div>
           <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>#Sn</th>
-                <th>Company Name</th>
+                <th>#Id</th>
+                <th>Admin Name</th>
+                <th>Job Title</th>
                 <th>Description</th>
-                <th>Action</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Actions</th>
                 
                 
             </tr>
@@ -33,18 +37,22 @@ include('include/sidebar.php');
         <tbody>
         <?php
         include('connection/db.php');
-        $query=mysqli_query($conn,"select * from company");
+        $query=mysqli_query($conn,"select * from all_jobs where customer_email='{$_SESSION['email']}'");
         while($row=mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $row['company_id'];?></td>
-                <td><?php echo $row['company'];?></td>
+                <td><?php echo $row['job_id'];?></td>
+                <td><?php echo $row['customer_email'];?></td>
+                <td><?php echo $row['job_title'];?></td>
                 <td><?php echo $row['des'];?></td>
+                <td><?php echo $row['country'];?></td>
+                <td><?php echo $row['state'];?></td>
+                <td><?php echo $row['city'];?></td>
                 <td>
                   <div class="row">
                     <div class="btn-group">
-                      <a href="company_edit.php ?edit=<?php echo $row['company_id'];?>" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
-                      <a href="company_delete.php?del=<?php echo $row['company_id'];?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a href="company_edit.php ?edit=<?php echo $row['job_id'];?>" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a href="company_delete.php?del=<?php echo $row['job_id'];?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                     </div>
 
                   </div>
@@ -57,10 +65,14 @@ include('include/sidebar.php');
         </tbody>
         <tfoot>
             <tr>
-                <th>#Sn</th>
-                <th>Company Name</th>
+                <th>#Id</th>
+                <th>Admin Name</th>
+                <th>Job Title</th>
                 <th>Description</th>
-                <th>Action</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Actions</th>
 
                 
             </tr>
