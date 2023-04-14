@@ -27,8 +27,8 @@ include('include/sidebar.php');
                     <input type="text" name="company" id="company" class="form-control" placeholder="Enter Company Name">
                 </div>
                 <div class="form-group">
-                    <label for="Customer Username">Enter Description</label>
-                    <textarea name="Description" id="Description" class="form-control" cols="30" rows="10"></textarea>
+                    <label for="Company Description">Enter Description</label>
+                    <textarea name="des" id="des" class="form-control" cols="30" rows="10"></textarea>
                 </div>
                     <div class="form-group">
                     <input type="submit" class="btn btn-block btn-success" placeholder="Save" name="submit" id="submit">
@@ -65,18 +65,23 @@ include('include/sidebar.php');
     $('#example').DataTable();
 });
     </script>
-      <?php
-include('connection/db.php');
-$company=$_POST['company'];
-$des=$_POST['Description'];
-if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
-$query=mysqli_query($conn,"insert into company(company,des)values('$company','$des')");
-if($query){
-    echo "Data has been successfully inserted";
-    header("Location: create_company.php");
-}
-  }
-?>
+    <script>
+    $(document).ready(function(){
+      $("#submit").click(function(){
+        var company=$("#company").val();
+        var del=$("#des").val();
+        var data=$("#customer_form").serialize();
+        $.ajax({
+          type:"POST",
+          url:"Company_add.php",
+          data:data,
+          success:function(data){
+            alert(data);
+          }
+        });
+        
+      });
+    });
+    </script>
   </body>
 </html>

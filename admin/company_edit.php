@@ -1,3 +1,23 @@
+
+
+<?php
+include('connection/db.php');
+if(isset($_POST['submit'])){
+    $company_id=$_POST['company_id'];
+    $company=$_POST['company'];
+    $des=$_POST['des'];
+    $query1=mysqli_query($conn,"update company set company='$company',des='$des' where company_id='$company_id'");
+    if($query1){
+        echo "<script> alert('Record has been Updated!!')</script>";
+        header('location:customers.php');
+    }
+    else{
+        echo "<script> alert('Record not Update!!')</script>";
+    }
+}
+?>
+
+
 <?php
 include('connection/db.php');
 include('include/header.php');
@@ -76,16 +96,16 @@ while($row=mysqli_fetch_array($query)){
 <?php
 include('connection/db.php');
 if(isset($_POST['submit'])){
-    $company_id=$_POST['company_id'];
-    $company=$_POST['company'];
-    $des=$_POST['des'];
-    $query1=mysqli_query($conn,"update company set company='$company',des='$des' where company_id='$company_id'");
-    if($query1){
-        echo "<script> alert('Record has been Updated!!')</script>";
-        header('location:customers.php');
-    }
-    else{
-        echo "<script> alert('Record not Update!!')</script>";
-    }
+  $id=$_POST['id'];
+  $company=$_POST['company'];
+  $des=$_POST['des'];
+  $query1=mysqli_query($conn,"update admin_login set company='$company',des='$des' where id='$id'");
+  if($query){
+    echo "<script> alert('Record has been Updated!!')</script>";
+    header('location:create_company.php');
 }
-?>
+else{
+    echo "<script> alert('Record not Update!!')</script>";
+}
+
+}
