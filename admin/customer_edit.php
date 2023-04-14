@@ -5,13 +5,13 @@ include('include/sidebar.php');
 $id=$_GET['edit'];
 $query=mysqli_query($conn,"select * from admin_login where id='$id'");
 while($row=mysqli_fetch_array($query)){
-   $email= $row['admin_email'];
-   $admin_pass=$row['admin_pass'];
-   $admin_username= $row['admin_username'];
-   $first_name= $row['first_name'];
-   $last_name= $row['last_name'];
-   $admin_type= $row['admin_type'];
-
+  $email=$row['admin_email'];
+  $first_name=$row['first_name'];
+  $last_name=$row['last_name'];
+  $admin_pass=$row['admin_pass'];
+  $admin_username=$row['admin_username'];
+  $email=$row['admin_email'];
+  $admin_type=$row['admin_type'];
 }
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -30,20 +30,20 @@ while($row=mysqli_fetch_array($query)){
               </div>
             </div>
           </div>
-          <div style="width:50%;margin-left:20%;background-color:#F2F4F4">
+          <div style="width:60%;margin-left:20%;background-color:#F2F4F4">
           <div id="msg"></div>
-            <form action="customers.php" method="post" style="margin: 3%;padding:3%" name="customer_form" id="customer_form">
+            <form action="" method="post" style="margin: 3%;padding:3%" name="customer_form" id="customer_form">
                 <div class="form-group">
                     <label for="Customer Email">Enter Customer Email</label>
-                    <input type="email" name="email" id="email" value="<?php echo $email?>" class="form-control" placeholder="Enter Customer Email">
+                    <input type="email" name="email" id="email" value="<?php echo $email ?>" class="form-control" placeholder="Enter Customer Email">
                 </div>
                 <div class="form-group">
                     <label for="Customer Username">Enter Username</label>
-                    <input type="text" name="Username" id="Username" value="<?php echo $admin_username?>" class="form-control" placeholder="Enter Customer Username">
+                    <input type="text" name="Username" id="Username" value="<?php echo $admin_username ?>" class="form-control" placeholder="Enter Customer Username">
                 </div>
                 <div class="form-group">
                     <label for="Password">Enter Password</label>
-                    <input type="password" name="Password" id="Password" value="<?php echo $admin_pass?>" class="form-control" placeholder="Enter Password">
+                    <input type="password" name="Password" id="Password" value="<?php echo $admin_pass ?>" class="form-control" placeholder="Enter Password">
                 </div>
                 <div class="form-group">
                     <label for="First name">Enter First Name</label>
@@ -51,23 +51,24 @@ while($row=mysqli_fetch_array($query)){
                 </div>
                 <div class="form-group">
                     <label for="Last name">Enter Last Name</label>
-                    <input type="text" name="last_name" id="last_name" value="<?php echo $last_name?>" class="form-control" placeholder="Enter last name">
+                    <input type="text" name="last_name" id="last_name"  value="<?php echo $last_name ?>"class="form-control" placeholder="Enter last name">
                 </div>
                 <div class="form-group">
                     <label for="Admin type">Admin Type</label>
-                    <select name="admin_type" name="admin_type" value="<?php echo $admin_type?>"class="form-control" id="admin_type">
+                    <select name="admin_type" name="admin_type"  value="<?php echo $admin_type ?>" class="form-control" id="admin_type">
                         <option value="1">Super Admin</option>
                         <option value="2">Customer Admin</option>
                     </select>
                     </div>
-                    <input type="hidden" name="id" id="id" value="<?php echo $id=$_GET['edit']; ?>">
+                    <input type="hidden" name="id" id="id" value="<?php echo $_GET['edit']; ?>">
+
                     <div class="form-group">
                     <input type="submit" class="btn btn-block btn-success" placeholder="Update" name="submit" id="submit">
                 </div>
                 
             </form>
           </div>
-          <!-- <canvas class="my-4" id="myChart" width="900" height="380"></canvas> -->
+          <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
 
         </main>
@@ -96,26 +97,25 @@ while($row=mysqli_fetch_array($query)){
     $('#example').DataTable();
 });
     </script>
- 
-  </body>
+     </body>
 </html>
 <?php
 include('connection/db.php');
 if(isset($_POST['submit'])){
-    $id=$_POST['id'];
-    $email=$_POST['email'];
-    $Username=$_POST['Username'];
-    $Password=$_POST['Password'];
-    $first_name=$_POST['first_name'];
-    $last_name=$_POST['last_name'];
-    $admin_type=$_POST['admin_type'];
-    $query1=mysqli_query($conn,"update admin_login set admin_email='$email',admin_username='$Username',admin_pass='$Password',first_name='$first_name',last_name='$last_name',admin_type='$admin_type' where id='$id'");
-    if($query1){
-        echo "<script> alert('Record has been Updated!!')</script>";
-        header('location:customers.php');
-    }
-    else{
-        echo "<script> alert('Record not Update!!')</script>";
-    }
+  $id=$_POST['id'];
+  $email=$_POST['email'];
+  $Username=$_POST['Username'];
+  $Password=$_POST['Password'];
+  $first_name=$_POST['first_name'];
+  $last_name=$_POST['last_name'];
+  $admin_type=$_POST['admin_type'];
+  $query1=mysqli_query($conn,"update admin_login set admin_email='$email',admin_username='$Username',admin_pass='$Password',first_name='$first_name',last_name='$last_name',admin_type='$admin_type' where id='$id'");
+  if($query){
+    echo "<script> alert('Record has been Updated!!')</script>";
+    header('location:customers.php');
 }
-?>
+else{
+    echo "<script> alert('Record not Update!!')</script>";
+}
+
+}

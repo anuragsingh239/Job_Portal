@@ -1,5 +1,5 @@
 <?php
-include('include/header.php');
+include_once('include/header.php');
 include('include/sidebar.php');
 ?>
 
@@ -21,7 +21,7 @@ include('include/sidebar.php');
           </div>
           <div style="width:50%;margin-left:20%;background-color:#F2F4F4">
           <div id="msg"></div>
-            <form action="" method="post" style="margin: 3%;padding:3%" name="customer_form" id="customer_form">
+            <form action="add_job.php" method="post" style="margin: 3%;padding:3%" name="customer_form" id="customer_form">
                 <!-- <div class="form-group">
                     <label for="Customer Email">Enter Customer Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Enter Customer Email">
@@ -47,7 +47,7 @@ include('include/sidebar.php');
                     <input type="text" name="city" id="city" class="form-control" placeholder="Enter City">
                 </div>
                     <div class="form-group">
-                    <input type="submit" class="btn btn-block btn-success" placeholder="Save" name="submit" id="submit">
+                    <input type="submit" class="btn btn-block btn-success" placeholder="Save" name="submit" id="submit" >
                 </div>
                 
             </form>
@@ -82,20 +82,26 @@ include('include/sidebar.php');
 });
     </script>
       <?php
+  // if(isset($_POST['submit'] ))
+  //{
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
 include('connection/db.php');
-$customer_email=$_SERVER['email'];
+$customer_email=$_SESSION['email'];
 $job_title=$_POST['job_title'];
 $des=$_POST['des'];
 $country=$_POST['country'];
 $state=$_POST['state'];
 $city=$_POST['city'];
-if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
+//echo "hello";
+//if($_SERVER['REQUEST_METHOD'] == "POST")
+	//{
 $query=mysqli_query($conn,"insert into all_jobs(customer_email,job_title,des,country,state,city)values('$customer_email','$job_title','$des','$country','$state','$city')");
 if($query){
     echo "Data has been successfully inserted";
-    header("Location: job_create.php");
+  header("refresh:0,url = job_create.php");
 }
+
   }
 ?>
   </body>

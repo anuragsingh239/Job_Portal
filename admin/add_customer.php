@@ -19,7 +19,7 @@ include('include/sidebar.php');
               </div>
             </div>
           </div>
-          <div style="width:50%;margin-left:20%;background-color:#F2F4F4">
+          <div style="width:60%;margin-left:20%;background-color:#F2F4F4">
           <div id="msg"></div>
             <form action="" method="post" style="margin: 3%;padding:3%" name="customer_form" id="customer_form">
                 <div class="form-group">
@@ -84,22 +84,27 @@ include('include/sidebar.php');
     $('#example').DataTable();
 });
     </script>
-      <?php
-include('connection/db.php');
-$email=$_POST['email'];
-$Username=$_POST['Username'];
-$Password=$_POST['Password'];
-$first_name=$_POST['first_name'];
-$last_name=$_POST['last_name'];
-$admin_type=$_POST['admin_type'];
-if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
-$query=mysqli_query($conn,"insert into admin_login(admin_email,admin_pass,admin_username,first_name,last_name,admin_type)values('$email','$Password','$Username','$first_name','$last_name','$admin_type')");
-if($query){
-    echo "Data has been successfully inserted";
-    header("Location: customers.php");
-}
-  }
-?>
+    <script>
+    $(document).ready(function(){
+      $("#submit").click(function(){
+        var email=$("#email").val();
+        var Username=$("#Username").val();
+        var Password=$("#Password").val();
+        var first_name=$("#first_name").val();
+        var last_name=$("#last_name").val();
+        var admin_type=$("#first_name").val();
+        var data=$("#customer_form").serialize();
+        $.ajax({
+          type:"POST",
+          url:"Customer_add.php",
+          data:data,
+          success:function(data){
+            alert(data);
+          }
+        });
+        
+      });
+    });last_name
+    </script>
   </body>
 </html>
