@@ -29,8 +29,7 @@ include('include/sidebar.php');
                 <th>Country</th>
                 <th>State</th>
                 <th>City</th>
-                <th>Actions</th>
-                
+                             
                 
             </tr>
         </thead>
@@ -48,16 +47,7 @@ include('include/sidebar.php');
                 <td><?php echo $row['country'];?></td>
                 <td><?php echo $row['state'];?></td>
                 <td><?php echo $row['city'];?></td>
-                <td>
-                  <div class="row">
-                    <div class="btn-group">
-                      <a href="company_edit.php ?edit=<?php echo $row['job_id'];?>" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
-                      <a href="company_delete.php?del=<?php echo $row['job_id'];?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                    </div>
-
-                  </div>
-                </td>
-                
+                                
             </tr>
             <?php
             }
@@ -72,9 +62,7 @@ include('include/sidebar.php');
                 <th>Country</th>
                 <th>State</th>
                 <th>City</th>
-                <th>Actions</th>
-
-                
+                              
             </tr>
         </tfoot>
     </table>
