@@ -9,7 +9,7 @@
 	              <ul>
 	                <li><span class="icon icon-map-marker"></span><span class="text">GLA, UNIVERSITY, MATHURA,INDIA</span></li>
 	                <li><span class="icon icon-phone"></span><span class="text">9082638766</span></a></li>
-	                <li><span class="icon icon-envelope"></span><span class="text">anurag.singh2_cs20@gla.ac.in</span></a></li>
+	                <li><span class="icon icon-envelope"></span><span class="text">anurag.singh2_cs20@gla.ac.in, deepali.sharma_cs20@gla.ac.in</span></a></li>
 	              </ul>
 	            </div>
             </div>
