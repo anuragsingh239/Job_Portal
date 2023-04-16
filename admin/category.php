@@ -23,7 +23,7 @@ include('include/sidebar.php');
                 <th>#Sn</th>
                 <th>Category Name</th>
                 <th>Description</th>
-                <th>Action</th>
+                
                 
                 
             </tr>
@@ -38,15 +38,7 @@ include('include/sidebar.php');
                 <td><?php echo $row['id'];?></td>
                 <td><?php echo $row['category'];?></td>
                 <td><?php echo $row['des'];?></td>
-                <td>
-                  <div class="row">
-                    <div class="btn-group">
-                      <a href="company_edit.php ?edit=<?php echo $row['id'];?>" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
-                      <a href="company_delete.php?del=<?php echo $row['id'];?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                    </div>
-
-                  </div>
-                </td>
+               
                 
             </tr>
             <?php
@@ -58,9 +50,7 @@ include('include/sidebar.php');
                 <th>#Sn</th>
                 <th>Category Name</th>
                 <th>Description</th>
-                <th>Action</th>
-
-                
+                           
             </tr>
         </tfoot>
     </table>

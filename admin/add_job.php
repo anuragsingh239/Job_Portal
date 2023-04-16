@@ -1,6 +1,10 @@
 <?php
+include('connection/db.php');
 include_once('include/header.php');
 include('include/sidebar.php');
+?>
+<?php
+$query=mysqli_query($conn,"select * from job_category");
 ?>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -35,6 +39,11 @@ include('include/sidebar.php');
                     <input type="text" name="des" id="des" class="form-control" placeholder="Description">
                 </div>
                 <div class="form-group">
+                    <label for="Keyword">Enter Keyword</label>
+                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Enter Keyword">
+                </div>
+                
+                <div class="form-group">
                     <label for="country">Enter Country</label>
                     <input type="text" name="country" id="country" class="form-control" placeholder="Enter Country">
                 </div>
@@ -45,6 +54,18 @@ include('include/sidebar.php');
                 <div class="form-group">
                     <label for="des">Enter City</label>
                     <input type="text" name="city" id="city" class="form-control" placeholder="Enter City">
+                </div>
+                <div class="form-group">
+                  <label for="">Select Category</label>
+                  <select name="category" class=" form-control" id="category">
+                    <?php 
+                    while($row=mysqli_fetch_array($query)){
+                      ?>
+                      <option value="<?php echo $row['id'] ?>"><?php echo $row['category'] ;?> </option>
+                      <?php
+                    }
+                    ?>
+                  </select>
                 </div>
                     <div class="form-group">
                     <input type="submit" class="btn btn-block btn-success" placeholder="Save" name="submit" id="submit" >
@@ -93,10 +114,12 @@ $des=$_POST['des'];
 $country=$_POST['country'];
 $state=$_POST['state'];
 $city=$_POST['city'];
+$category=$_POST['category'];
+$keyword=$_POST['keyword'];
 //echo "hello";
 //if($_SERVER['REQUEST_METHOD'] == "POST")
 	//{
-$query=mysqli_query($conn,"insert into all_jobs(customer_email,job_title,des,country,state,city)values('$customer_email','$job_title','$des','$country','$state','$city')");
+$query=mysqli_query($conn,"insert into all_jobs(customer_email,job_title,des,country,state,city,keyword,category)values('$customer_email','$job_title','$des','$country','$state','$city','$keyword','$category')");
 if($query){
     echo "Data has been successfully inserted";
   header("refresh:0,url = job_create.php");

@@ -29,6 +29,8 @@ include('include/sidebar.php');
                 <th>Country</th>
                 <th>State</th>
                 <th>City</th>
+                <th>Keyword</th>
+                <th>Category</th>
                              
                 
             </tr>
@@ -47,6 +49,8 @@ include('include/sidebar.php');
                 <td><?php echo $row['country'];?></td>
                 <td><?php echo $row['state'];?></td>
                 <td><?php echo $row['city'];?></td>
+                <td><?php echo $row['keyword'];?></td>
+                <td><?php echo $row['category'];?></td>
                                 
             </tr>
             <?php
@@ -62,6 +66,8 @@ include('include/sidebar.php');
                 <th>Country</th>
                 <th>State</th>
                 <th>City</th>
+                <th>Keyword</th>
+                <th>Category</th>
                               
             </tr>
         </tfoot>
