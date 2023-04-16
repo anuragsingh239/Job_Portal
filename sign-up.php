@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Admin Login</title>
+    <title>Sign Up</title>
 
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -30,19 +30,28 @@
     <!-- <form class="form-signin" id="admin_login" name="admin_login"> -->
     <form class="form-signin">
 
-      <img class="mb-4" src="admin/img/logo.jpg" alt="" width="115" height="115">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <img class="mb-4" src="images/sign-up.jpeg" alt="" width="115" height="115">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="pass" id="pass" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <a href="sign-up.php">Create a Account</a>
+      <label for="inputEmail" class="sr-only">First Name</label>
+      <input type="first_name" name="first_name" id="first_name" class="form-control" placeholder="Enter Your First Name" required autofocus>
+      <label for="inputEmail" class="sr-only">Last Name</label>
+      <input type="last_name" name="last_name" id="last_name" class="form-control" placeholder="Enter Your Last Name" required autofocus>
+      <label for="inputEmail" class="sr-only">Mobile Number</label>
+      <input type="number" name="mobile_number" id="mobile_number" class="form-control" placeholder="Enter Your Mobile Number" required autofocus>
+      <label for="inputdob" class="sr-only">Date of Birth</label>
+      <input type="date" name="dob" id="dob" class="form-control" placeholder="Enter Your Last Name" required autofocus>
+      <input type="submit" class="btn btn-lg btn-primary btn-block" name="submit" value="Sign up" >
+      <a href="job-post.php">Already a Account</a>
       <p></p>
-    <p class="h3 mb-3 font-weight-normal"> Login</p>
+    <p class="h3 mb-3 font-weight-normal"> Sign Up</p>
     </form>
   </body>
 </html>
+<?php
+include('admin/connection/db.php');
+
+?>
