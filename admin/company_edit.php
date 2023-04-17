@@ -7,6 +7,8 @@ $query=mysqli_query($conn,"select * from company where company_id='$id'");
 while($row=mysqli_fetch_array($query)){
   $company_name=$row['company'];
   $des=$row['des'];
+  $admin=$row['admin'];
+  
  }
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -38,7 +40,17 @@ while($row=mysqli_fetch_array($query)){
                       <?php echo $des ;?>
                     </textarea>
                 </div>
-               
+                <div class="form-group">
+                    <label for="Admin">Select Company Admin</label>
+                    <select name="admin" class="form-control" id="admin">
+                        <?php
+                        include('connection/db.php');
+                        $sql=mysqli_query($conn,"select * from admin_login where admin_type='2' ");
+                        while($row=mysqli_fetch_array($sql)){?>
+                          <option value="<?php echo $row['admin_email'];?>"><?php echo $row['admin_email']; ?> </option>
+                        <?php } ?>
+                    </select>
+                </div>
                 
                     <input type="hidden" name="id" id="id" value="<?php echo $_GET['edit']; ?>">
 
@@ -85,8 +97,9 @@ if(isset($_POST['submit'])){
   $id=$_POST['id'];
   $company=$_POST['company'];
   $des=$_POST['des'];
+  $admin=$_POST['admin'];
 
-  $query1=mysqli_query($conn,"update company set company='$company',des='$des' where company_id='$id'");
+  $query1=mysqli_query($conn,"update company set company='$company',des='$des',admin='$admin' where company_id='$id'");
   if($query1){
     echo "<script> alert('Record has been Updated!!')</script>";
 }

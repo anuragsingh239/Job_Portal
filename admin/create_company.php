@@ -23,6 +23,7 @@ include('include/sidebar.php');
                 <th>#Sn</th>
                 <th>Company Name</th>
                 <th>Description</th>
+                <th>Admin</th>
                 <th>Action</th>
                 
                 
@@ -38,6 +39,7 @@ include('include/sidebar.php');
                 <td><?php echo $row['company_id'];?></td>
                 <td><?php echo $row['company'];?></td>
                 <td><?php echo $row['des'];?></td>
+                <td><?php echo $row['admin'];?></td>
                 <td>
                   <div class="row">
                     <div class="btn-group">
@@ -58,6 +60,7 @@ include('include/sidebar.php');
                 <th>#Sn</th>
                 <th>Company Name</th>
                 <th>Description</th>
+                <th>Admin</th>
                 <th>Action</th>
 
                 

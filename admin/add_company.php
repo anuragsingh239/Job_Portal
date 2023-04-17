@@ -2,6 +2,10 @@
 include('include/header.php');
 include('include/sidebar.php');
 ?>
+<?php
+include('connection/db.php');
+$query=mysqli_query($conn,"select * from admin_login where admin_type='2' ");
+?>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <nav aria-label="breadcrumb">
@@ -29,6 +33,15 @@ include('include/sidebar.php');
                 <div class="form-group">
                     <label for="Company Description">Enter Description</label>
                     <textarea name="des" id="des" class="form-control" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Admin">Select Company Admin</label>
+                    <select name="admin" class="form-control" id="admin">
+                        <?php
+                        while($row=mysqli_fetch_array($query)){?>
+                          <option value="<?php echo $row['admin_email'];?>"><?php echo $row['admin_email']; ?> </option>
+                        <?php } ?>
+                    </select>
                 </div>
                     <div class="form-group">
                     <input type="submit" class="btn btn-block btn-success" placeholder="Save" name="submit" id="submit">
@@ -69,7 +82,8 @@ include('include/sidebar.php');
     $(document).ready(function(){
       $("#submit").click(function(){
         var company=$("#company").val();
-        var del=$("#des").val();
+        var des=$("#des").val();
+        var admin=$("#admin").val();
         var data=$("#customer_form").serialize();
         $.ajax({
           type:"POST",

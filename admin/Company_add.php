@@ -1,8 +1,9 @@
 <?php
 include('connection/db.php');
- $company=$_POST['company'];
+$company=$_POST['company'];    
 $des=$_POST['des'];
-$query=mysqli_query($conn,"insert into company(company,des)values('$company','$des')");
+$admin=$_POST['admin'];
+$query=mysqli_query($conn,"INSERT INTO company (`company`, `des`, `admin`) VALUES ('$company','$des','$admin')");
 if($query){
     echo "data has been inserted";
 }

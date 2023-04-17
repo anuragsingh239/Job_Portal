@@ -165,7 +165,7 @@ $query=mysqli_query($conn,"select * from job_category");
 			              			<div class="col-md">
 			              				<div class="form-group">
 			              					<div class="form-field">
-								                <input type="submit" value="Search" class="form-control btn btn-primary">
+								                <input type="submit" name="search" id="search" value="Search" class="form-control btn btn-primary">
 								              </div>
 							              </div>
 			              			</div>
@@ -180,7 +180,19 @@ $query=mysqli_query($conn,"select * from job_category");
         </div>
       </div>
     </div>
+<?php
+include('connection/db.php');
+if(isset($_POST['search'])){
+  $keyword=$_POST['key'];
+  $category=$_POST['category'];
+  $query1=mysqli_query($conn,"select * from all_jobs where keyword like '$keyword %'");
+  while($row=mysqli_fetch_array($query1)){
+    echo $row=['job_id'];
+    echo $row=['job_title'];
+  }
+}
 
+?>
 
 
 
