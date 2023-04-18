@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,21 +31,39 @@
 
   <body class="text-center">
     <!-- <form class="form-signin" id="admin_login" name="admin_login"> -->
-    <form class="form-signin">
+    <form class="form-signin" action="job-post.php" method="post" >
 
       <img class="mb-4" src="admin/img/logo.jpg" alt="" width="115" height="115">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name="pass" id="pass" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
+      <input type="password" name="Password" id="pass" class="form-control" placeholder="Password" required>
+      <!-- <div class="checkbox mb-3">
         
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </div> -->
+      <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" placeholder="Sign in"> </button>
       <a href="sign-up.php">Create a Account</a>
       <p></p>
     <p class="h3 mb-3 font-weight-normal"> Login</p>
     </form>
   </body>
 </html>
+
+<?php
+include('connection/db.php');
+if(isset($_POST['submit'])){
+   $email=$_POST['email'];
+   $pass=$_POST['Password'];
+   $query=mysqli_query($conn,"select * from jobseeker where email='$email' and password='$pass' ");
+   if($query){
+   if(mysqli_num_rows($query)>0){
+     $_SESSION['email']=$email;
+      header('location:index.php');
+   }
+   else{
+    echo "<script>alert('Email or Password is incorrect,Please try again')</script>";
+   }
+}
+}
+?>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('connection/db.php');
 $query=mysqli_query($conn,"select * from job_category");
 ?>
@@ -47,8 +48,16 @@ $query=mysqli_query($conn,"select * from job_category");
 	          <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta mr-md-2"><a href="new-post.php" class="nav-link">Post a Job</a></li>
-	          <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link">Want a Job</a></li>
+            <?php 
+            if( isset($_SESSION['email'])==true){ ?>
+	          <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link"><?php echo $_SESSION['email']; ?></a></li>
+            <li class="nav-item cta mr-md-2"><a href="logout.php" class="nav-link">logout</a></li> 
+            <?php 
+            }else { ?>
+            <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link">Login</a></li>
+            <?php 
+            }
+            ?>
 
 	        </ul>
 	      </div>
@@ -85,7 +94,7 @@ $query=mysqli_query($conn,"select * from job_category");
 			              				<div class="form-group">
 				              				<div class="form-field">
 				              					<div class="icon"><span class="icon-briefcase"></span></div>
-								                <input type="text" name="key" id="key" class="form-control" placeholder="eg. Garphic. Web Developer">
+								                <input type="text" name="key" id="key" class="form-control" placeholder="eg.  Web Developer">
 								              </div>
 							              </div>
 			              			</div>
@@ -185,7 +194,7 @@ include('connection/db.php');
 if(isset($_POST['search'])){
   $keyword=$_POST['key'];
   $category=$_POST['category'];
-  $sql=mysqli_query($conn,"select * from all_jobs LEFT JOIN company ON all_jobs.customer_email=company.admin WHERE keyword LIKE '%$keyword%' OR category='$category' ");
+  $query=mysqli_query($conn,"select * from all_jobs LEFT JOIN company ON all_jobs.customer_email=company.admin WHERE keyword LIKE '%$keyword%' OR category='$category' ");
   
 }
 
@@ -203,7 +212,7 @@ if(isset($_POST['search'])){
         </div>
 				<div class="row">
         <?php
-         while($row=mysqli_fetch_array($sql)){ ?>
+         while($row=mysqli_fetch_array($query)){ ?>
 
 					<div class="col-md-12 ftco-animate">
 
@@ -223,7 +232,7 @@ if(isset($_POST['search'])){
               </div>
 
               <div class="ml-auto d-flex">
-                <a href="job-single.html" class="btn btn-primary py-2 mr-1">Apply Job</a>
+                <a href="blog-single.php?id=<?php echo $row['job_id']; ?>" class="btn btn-primary py-2 mr-1">Apply Job</a>
                 <!-- <a href="#" class="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
                 	<span class="icon-heart"></span>
                 </a> -->
@@ -234,9 +243,9 @@ if(isset($_POST['search'])){
         </div>
           
 				</div>
-				</div>
+				
 </section>
-
+</div>
 
     <section class="ftco-section services-section bg-light">
       <div class="container">
@@ -430,7 +439,7 @@ if(isset($_POST['search'])){
 <?php
 include('include/footer.php');
 ?>
-<script>
+<!-- <script>
 $(document).ready(function(){
   $("#id_all_jobs").hide();
   $("#search").click(function(e){
@@ -438,4 +447,4 @@ $(document).ready(function(){
     $("#id_all_jobs").show();
   });
 });
-</script>
+</script> -->
