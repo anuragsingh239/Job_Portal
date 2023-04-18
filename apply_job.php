@@ -140,11 +140,11 @@ body {
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">Cover your page.</h1>
+        <h1 class="cover-heading">Thanks For Applying.</h1>
 <?php
 include('connection/db.php');
 if(isset($_POST['submit'])){
-    
+   
     $first_name=$_POST['first_name'];
     $last_name=$_POST['last_name'];
     $dob=$_POST['dob'];
@@ -153,6 +153,12 @@ if(isset($_POST['submit'])){
     $tmp_name=$_FILES['file']['tmp_name'];
     $id_job=$_POST['id_job'];
     $job_seeker=$_POST['job_seeker'];
+
+    $sql=mysqli_query($conn,"select * from job_apply where job_seeker='$job_seeker' and id_job='$id_job' ");
+    if(mysqli_num_rows($sql)>0){
+      echo "<h1> You already applied !!! </h1>";
+      
+    }else{
 
     move_uploaded_file($_FILES["file"]["tmp_name"],'files/' .$file);
     $query=mysqli_query($conn,"insert into job_apply(first_name,last_name,dob,file,id_job,job_seeker)values('$first_name','$last_name','$dob','$file','$id_job','$job_seeker')");
@@ -165,22 +171,17 @@ if(isset($_POST['submit'])){
     }
 
 }
+}
 ?>
 
         
  
         <p class="lead">
-          <a href="apply_job.php" class="btn btn-lg btn-secondary">Back</a>
+          <a href="http://localhost/Job_Portal/" class="btn btn-lg btn-secondary">Back</a>
         </p>
       </main>
 
-      <!-- <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>For Further Details <a href="anurag.singh2_cs20@gla.ac.in">Contact</a>,or <a href="deepali.sharma_cs20@gla.ac.in"></a></p>
-        </div>
-      </footer>
-    </div> -->
-
+     
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
