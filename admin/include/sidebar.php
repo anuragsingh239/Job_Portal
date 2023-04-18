@@ -44,8 +44,7 @@ if(mysqli_num_rows($query)>0){
                   Company
                 </a>
               </li>
-            </ul>
-
+             
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>
               <a class="d-flex align-items-center text-muted" href="#">
@@ -104,6 +103,12 @@ if(mysqli_num_rows($query)>0){
                 <a class="nav-link" href="job_create.php">
                   <span data-feather="bar-chart-2"></span>
                   Job Create
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="apply_jobs.php">
+                  <span data-feather="layers"></span>
+                  Apply jobs
                 </a>
               </li>
             </ul>

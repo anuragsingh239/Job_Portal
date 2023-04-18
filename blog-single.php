@@ -50,9 +50,17 @@ if( isset($_SESSION['email'])==true){
 	          <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>
-	          <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta mr-md-2"><a href="new-post.html" class="nav-link">Post a Job</a></li>
-	          <li class="nav-item cta cta-colored"><a href="job-post.html" class="nav-link">Want a Job</a></li>
+	          <li class="nav-item active"><a href="contact.php" class="nav-link">Contact</a></li>
+            <?php 
+            if( isset($_SESSION['email'])==true){ ?>
+	          <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link"><?php echo $_SESSION['email']; ?></a></li>
+            <li class="nav-item cta mr-md-2"><a href="logout.php" class="nav-link">logout</a></li> 
+            <?php 
+            }else { ?>
+            <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link">Login</a></li>
+            <?php 
+            }
+            ?>
 
 	        </ul>
 	      </div>
@@ -69,6 +77,7 @@ if( isset($_SESSION['email'])==true){
       $country=$row['country'];
       $state=$row['state'];
       $city=$row['city'];
+      $id_job=$row['job_id'];
 
     }
 ?>
@@ -95,8 +104,10 @@ if( isset($_SESSION['email'])==true){
             <h5><?php echo $country; ?>,<?php echo $state; ?>,<?php echo $city; ?></h5>
             <p><?php echo $des; ?></p>
            
-            <form action="blog-single.php" method="post" enctype="multipart/form-data" style="border: 1px solid gray;">
+            <form action="apply_job.php" method="post" id="JobPortal" enctype="multipart/form-data" style="border: 1px solid gray;">
               <div style="padding:2%;">
+              <input type="hidden" name="job_seeker" value="<?php echo $_SESSION['email']; ?>" id="job_seeker">
+              <input type="hidden" name="id_job" value="<?php echo $id_job; ?>" id="id_job">
                 <div class="row">
                   <div class="col-sm-6">
                     <label for="">Enter Your First Name</label>
