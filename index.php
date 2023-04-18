@@ -58,6 +58,7 @@ $query=mysqli_query($conn,"select * from job_category");
             <?php 
             }
             ?>
+            <li class="nav-item"><a href="admin/admin_login.php" class="nav-link">Admin Login</a></li>
 
 	        </ul>
 	      </div>
