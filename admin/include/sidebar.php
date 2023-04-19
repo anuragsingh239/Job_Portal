@@ -92,21 +92,7 @@ if(mysqli_num_rows($query)>0){
                 <span data-feather="plus-circle"></span>
               </a> -->
             </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Current month
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              
-            </ul>
+            
           </div>
         </nav>
   <?php

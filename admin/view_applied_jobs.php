@@ -23,7 +23,7 @@ include('include/sidebar.php');
         <?php
         include('connection/db.php');
         $id=$_GET['id'];
-       $sql="select * from job_apply LEFT JOIN all_jobs ON job_apply.id_job=all_jobs.job_id ";
+       $sql="select * from job_apply LEFT JOIN all_jobs ON job_apply.id_job=all_jobs.job_id  where id='$id' ";
        $query=mysqli_query($conn,$sql);
         while($row=mysqli_fetch_array($query)){
         ?>
@@ -50,9 +50,14 @@ include('include/sidebar.php');
                     <td><?php echo $row['job_seeker'];?></td>
 
                 </div>
+                <div class="form-group">
+                    <label for="">Job Seeker Mobile No :</label>
+                    <td><?php echo $row['mobile_number'];?></td>
+
+                </div>
                 
                 <div class="form-group">
-                    <label for="">Job Seeker Email :</label>
+                    <label for="">Job Seeker Resume :</label>
                     <td><a href="http://localhost/Job_Portal/files/<?php echo $row['file']; ?>">  Download File </a></td>
 
                 </div>

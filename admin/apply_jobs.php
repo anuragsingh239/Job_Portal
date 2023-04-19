@@ -22,13 +22,13 @@ include('include/sidebar.php');
           <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>#Job Id</th>
+                <th>#Sl</th>
                 <th>Job Title</th>
                 <th>Description</th>
                 <th>Job Seeker Name</th>
                 <th>Job Seeker Email</th>
-                <th>Job Seeker File</th>
-                <!-- <th>Action</th> -->
+                <!-- <th>Job Seeker File</th> -->
+                <th>Action</th>
                 
                              
                 
@@ -37,25 +37,32 @@ include('include/sidebar.php');
         <tbody>
         <?php
         include('connection/db.php');
-    //    $a=1;
+       $a=1;
        $sql="select * from job_apply LEFT JOIN all_jobs ON job_apply.id_job=all_jobs.job_id where customer_email='{$_SESSION['email']}'";
        $query=mysqli_query($conn,$sql);
         while($row=mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $row['job_id']?></td>
+                <td><?php echo $a; ?></td>
                 <td><?php echo $row['job_title'];?></td>
                 <td><?php echo $row['des'];?></td>
                 <td><?php echo $row['first_name'];?> <?php echo $row['last_name'];?></td>
                 <td><?php echo $row['job_seeker'];?></td>
-                <td><a href="http://localhost/Job_Portal/files/<?php echo $row['file']; ?>">  Download File </a></td>
+                <!-- <td><a href="http://localhost/Job_Portal/files/<?php echo $row['file']; ?>">  Download File </a></td> -->
+                <td>
+                  <div class="row">
+                    <div class="btn-group">
+                      <a href="view_applied_jobs.php ?id=<?php echo $row['id'];?>" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                      
+                    </div>
+
+                  </div>
+                </td>
         
                 
                                 
             </tr>
-            <?php
-            }
-            ?>
+            <?php $a++; } ?>
         </tbody>
         <tfoot>
             <tr>
@@ -64,8 +71,8 @@ include('include/sidebar.php');
                 <th>Description</th>
                 <th>Job Seeker Name</th>
                 <th>Job Seeker Email</th>
-                <th>Job Seeker File</th>
-                <!-- <th>Action</th> -->
+                <!-- <th>Job Seeker File</th> -->
+                <th>Action</th>
                               
             </tr>
         </tfoot>
