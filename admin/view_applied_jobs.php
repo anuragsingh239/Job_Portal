@@ -62,19 +62,20 @@ include('include/sidebar.php');
 
                 </div>
                 
-                
-                
-                
-                <!--  -->
                
                                 
             </tr>
-            <?php
-            }
-            ?>
+            <?php } ?>
+            <a href="#"class="btn btn-success">Accept</a>
+            <a href="#" class="btn btn-danger">Reject</a>
+            
+            
        
           </form>
           <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+          <div class="table-responsive">
+
+          </div>
 
 
         </main>
