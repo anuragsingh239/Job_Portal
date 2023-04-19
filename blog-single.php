@@ -77,6 +77,7 @@ if( isset($_SESSION['email'])==true){
       $country=$row['country'];
       $state=$row['state'];
       $city=$row['city'];
+      $id_job=$row['job_id'];
 
     }
 ?>
@@ -105,6 +106,8 @@ if( isset($_SESSION['email'])==true){
            
             <form action="apply_job.php" method="post" id="JobPortal" enctype="multipart/form-data" style="border: 1px solid gray;">
               <div style="padding:2%;">
+              <input type="hidden" name="job_seeker" value="<?php echo $_SESSION['email']; ?>" id="job_seeker">
+              <input type="hidden" name="id_job" value="<?php echo $id_job ; ?>" id="id_job">
                 <div class="row">
                   <div class="col-sm-6">
                     <label for="">Enter Your First Name</label>

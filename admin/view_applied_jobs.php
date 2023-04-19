@@ -8,69 +8,67 @@ include('include/sidebar.php');
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="#"> Apply Jobs</a></li>
+            <li class="breadcrumb-item"><a href="#"> Applied  Jobs</a></li>
             </ol>
           </nav>
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">All Jobs</h1>
+          <h1 class="h2">Applied  Jobs</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
               </div>
-              <!-- <a class="btn btn-primary" href="add_job.php">Apply Jobs</a> -->
+             
             </div>
           </div>
-          <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>#Job Id</th>
-                <th>Job Title</th>
-                <th>Description</th>
-                <th>Job Seeker Name</th>
-                <th>Job Seeker Email</th>
-                <th>Job Seeker File</th>
-                <!-- <th>Action</th> -->
-                
-                             
-                
-            </tr>
-        </thead>
-        <tbody>
+          <form action="" style="border:1px solid gray;width:80%;margin-left:10%;padding:10px;">
         <?php
         include('connection/db.php');
-    //    $a=1;
-       $sql="select * from job_apply LEFT JOIN all_jobs ON job_apply.id_job=all_jobs.job_id where customer_email='{$_SESSION['email']}'";
+        $id=$_GET['id'];
+       $sql="select * from job_apply LEFT JOIN all_jobs ON job_apply.id_job=all_jobs.job_id ";
        $query=mysqli_query($conn,$sql);
         while($row=mysqli_fetch_array($query)){
         ?>
-            <tr>
-                <td><?php echo $row['job_id']?></td>
-                <td><?php echo $row['job_title'];?></td>
-                <td><?php echo $row['des'];?></td>
-                <td><?php echo $row['first_name'];?> <?php echo $row['last_name'];?></td>
-                <td><?php echo $row['job_seeker'];?></td>
-                <td><a href="http://localhost/Job_Portal/files/<?php echo $row['file']; ?>">  Download File </a></td>
-        
+                <div class="form-group">
+                    <label for="">Job Title :</label>
+                    <td><?php echo $row['job_title'];?></td>
+
+                 </div>
+            
+                 <div class="form-group">
+                    <label for="">Job Des :</label>
+                    <td><?php echo $row['des'];?></td>
+
+                 </div>
                 
+                <div class="form-group">
+                    <label for="">Job Seeker Name :</label>
+                    <td><?php echo $row['first_name'];?> <?php echo $row['last_name'];?></td>
+
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Job Seeker Email :</label>
+                    <td><?php echo $row['job_seeker'];?></td>
+
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Job Seeker Email :</label>
+                    <td><a href="http://localhost/Job_Portal/files/<?php echo $row['file']; ?>">  Download File </a></td>
+
+                </div>
+                
+                
+                
+                
+                <!--  -->
+               
                                 
             </tr>
             <?php
             }
             ?>
-        </tbody>
-        <tfoot>
-            <tr>
-            <th>#Sl</th>
-                <th>Job Title</th>
-                <th>Description</th>
-                <th>Job Seeker Name</th>
-                <th>Job Seeker Email</th>
-                <th>Job Seeker File</th>
-                <!-- <th>Action</th> -->
-                              
-            </tr>
-        </tfoot>
-    </table>
-
+       
+          </form>
           <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
 
