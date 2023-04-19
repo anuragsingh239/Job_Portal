@@ -28,6 +28,8 @@ include('include/sidebar.php');
        $query=mysqli_query($conn,$sql);
         while($row=mysqli_fetch_array($query)){
         ?>
+                <h1><?php echo strtoupper($row['first_name']); ?> <?php echo strtoupper($row['last_name']); ?></h1>
+                <hr>
                 <div class="form-group">
                     <label for="">Job Title :</label>
                     <td><?php echo $row['job_title'];?></td>
@@ -67,8 +69,8 @@ include('include/sidebar.php');
                                 
             </tr>
             <?php } ?>
-            <a href="send_mail.php"class="btn btn-success">Accept</a>
-            <a href="reject_job.php" class="btn btn-danger">Reject</a>
+            <a href="send_mail.php?id=<?php echo $id; ?>"class="btn btn-success">Accept</a>
+            <a href="reject_job.php?id=<?php echo $id; ?>" class="btn btn-danger">Reject</a>
             
             
        
