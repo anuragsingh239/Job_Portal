@@ -111,21 +111,31 @@ if( isset($_SESSION['email'])==true){
                 <div class="row">
                   <div class="col-sm-6">
                     <label for="">Enter Your First Name</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="First Name....">
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name....">
                   </div>
                   <div class="col-sm-6">
                     <label for="">Enter Your Last Name</label>
-                    <input type="text" class="form-control" name="last_name" placeholder="Last Name....">
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name....">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
                     <label for="">Enter DOB</label>
-                    <input type="date" class="form-control" name="dob" placeholder="Date of birth....">
+                    <input type="date" class="form-control" name="dob" id="dob" placeholder="Date of birth....">
                   </div>
                   <div class="col-sm-6">
                     <label for="">Choose Resume</label>
                     <input type="file" name="file" class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="">Enter Contact Number</label>
+                    <input type="number" class="form-control" name="number" id="number" placeholder="Contact Number....">
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="">Email</label>
+                    <input type="text"  class="form-control" disabled="disabled" value="<?php echo $_SESSION['email']; ?>">
                   </div>
                 </div>
                 

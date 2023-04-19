@@ -149,6 +149,7 @@ if(isset($_POST['submit'])){
     $last_name=$_POST['last_name'];
     $dob=$_POST['dob'];
     $file=$_FILES['file']['name'];
+    $number=$_POST['number'];
 
     $tmp_name=$_FILES['file']['tmp_name'];
     $id_job=$_POST['id_job'];
@@ -161,7 +162,7 @@ if(isset($_POST['submit'])){
     }else{
 
     move_uploaded_file($_FILES["file"]["tmp_name"],'files/' .$file);
-    $query=mysqli_query($conn,"insert into job_apply(first_name,last_name,dob,file,id_job,job_seeker)values('$first_name','$last_name','$dob','$file','$id_job','$job_seeker')");
+    $query=mysqli_query($conn,"insert into job_apply(first_name,last_name,dob,file,id_job,job_seeker,mobile_number)values('$first_name','$last_name','$dob','$file','$id_job','$job_seeker','$number')");
     if($query){ ?>
     <p class="lead">Your Form Successfully Added</p>
        <?php
