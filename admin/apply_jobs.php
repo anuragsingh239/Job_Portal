@@ -8,7 +8,7 @@ include('include/sidebar.php');
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="#"> Apply Jobs</a></li>
+            <li class="breadcrumb-item"><a href="apply_jobs.php"> Apply Jobs</a></li>
             </ol>
           </nav>
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">

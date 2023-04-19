@@ -66,11 +66,7 @@ if(mysqli_num_rows($query)>0){
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  Orders
-                </a>
+              
               
               <li class="nav-item">
                 <a class="nav-link" href="job_create.php">
