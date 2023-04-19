@@ -67,8 +67,8 @@ include('include/sidebar.php');
                                 
             </tr>
             <?php } ?>
-            <a href="#"class="btn btn-success">Accept</a>
-            <a href="#" class="btn btn-danger">Reject</a>
+            <a href="send_mail.php"class="btn btn-success">Accept</a>
+            <a href="reject_job.php" class="btn btn-danger">Reject</a>
             
             
        
