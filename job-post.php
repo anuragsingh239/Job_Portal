@@ -43,7 +43,7 @@ session_start();
         
       </div> -->
       <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" placeholder="Sign in"> </button>
-      <!-- <a href="sign-up.php">Create a Account</a> -->
+      <a href="sign-up.php">Create a Account</a>
       <p></p>
     <p class="h3 mb-3 font-weight-normal"> Login</p>
     </form>
