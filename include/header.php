@@ -1,3 +1,8 @@
+<?php
+session_start();
+include('connection/db.php');
+$query=mysqli_query($conn,"select * from job_category");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,8 +46,18 @@
 	          <li class="nav-item active"><a href="about.php" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta mr-md-2"><a href="new-post.php" class="nav-link">Post a Job</a></li>
-	          <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link">Want a Job</a></li>
+            <?php 
+            if( isset($_SESSION['email'])==true){ ?>
+	          <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link"><?php echo $_SESSION['email']; ?></a></li>
+            <li class="nav-item cta mr-md-2"><a href="logout.php" class="nav-link">logout</a></li> 
+            <?php 
+            }else { ?>
+            <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link">Login</a></li>
+            <?php 
+            }
+            ?>
+            <br>
+           <li class="nav-item cta cta-colored"><a href="admin/admin_login.php" class="nav-link">Admin</a></li>
 
 	        </ul>
 	      </div>

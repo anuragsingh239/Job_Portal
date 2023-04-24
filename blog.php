@@ -72,6 +72,19 @@ include('include/header.php');
         </div>
       </div>
     </section>
+    <section class="ftco-section-parallax">
+      <div class="parallax-img d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+              <h2>Hope you find job relevant to you!!!</h2>
+              <p>Thank you for choosing our platform to further your career aspirations. We are committed to providing you with the best possible resources and support to help you achieve your goals.</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <?php
     include('include/footer.php');
     ?>
