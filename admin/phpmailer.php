@@ -34,12 +34,12 @@ $id=$_POST['id'];
     $mail->Host='smtp.gmail.com';
     $mail->SMTPAuth=true;
     $mail->Username=$from;
-    $mail->Password='tipihgeuyswaowgf'; //gmail app pass
+    $mail->Password='anbawsndhqmcjbmo'; //gmail app pass
     $mail->SMTPSecure='ssl';
     $mail->Port=465;
 
     $mail->setFrom($to);
-    $mail->addAddress('212deepali.sharma@gmail.com');
+    $mail->addAddress($to);
     $mail->isHTML(true);
     $mail->Subject='The Subject';
     $mail->Body=$body;

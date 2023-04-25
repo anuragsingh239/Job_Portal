@@ -41,7 +41,7 @@ include('include/sidebar.php');
                 
                 <div class="form-group">
                     <label for="">From :</label>
-                    <td><input type="email" id="from" name="from" class="form-control" placeholder="from..."></td>
+                    <td><input type="email" id="from" name="from" value="<?php echo $_SESSION['email'];?>" class="form-control" placeholder="from..."></td>
 
                 </div>
                 
